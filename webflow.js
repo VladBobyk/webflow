@@ -205,3 +205,30 @@
                 }
             });
         });
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var inverterPowerRadios = document.getElementsByName('Select-the-inverter-power');
+        var inverterPowerVRadios = document.getElementsByName('Select-the-inverter-power-V2');
+        var inverterPowerSpan = document.getElementById('inverter_power');
+        var buttonCalculator = document.getElementById('Calculator');
+        var buttonCalculator_1 = document.getElementById('Calculator_1');
+
+        buttonCalculator.addEventListener('click', function () {
+            updateInverterPower(inverterPowerRadios);
+        });
+
+        buttonCalculator_1.addEventListener('click', function () {
+            updateInverterPower(inverterPowerVRadios);
+        });
+
+        function updateInverterPower(radioButtons) {
+            for (var i = 0; i < radioButtons.length; i++) {
+                if (radioButtons[i].checked) {
+                    inverterPowerSpan.innerHTML = 'Потужність інвертора:&nbsp; <strong>' + radioButtons[i].value + '</strong>';
+                    break;
+                }
+            }
+        }
+    });
