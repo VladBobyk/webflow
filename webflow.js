@@ -181,30 +181,7 @@
             }
         });
 
-<!-- Скрипт розрахунку вартості -->
-        document.addEventListener('DOMContentLoaded', function () {
-            var formulaBtn = document.getElementById('formula_btn');
-            var priceParagraph = document.getElementById('price');
 
-            formulaBtn.addEventListener('click', function () {
-                var selectedInverterPower = document.querySelector('input[name="Select-the-inverter-power"]:checked');
-                var selectedFormulaValue = document.querySelector('input[name="Select-the-power-of-photovoltaic-modules"]:checked');
-                var selectedLocation = document.querySelector('input[name="Location-of-photovoltaic-modules"]:checked');
-
-                if (selectedInverterPower && selectedFormulaValue && selectedLocation) {
-                    var dataPricePow = parseInt(selectedInverterPower.getAttribute('data-price-pow'));
-                    var value = parseInt(selectedFormulaValue.value);
-                    var locationPrice = parseInt(selectedLocation.getAttribute('data-price-loc'));
-
-                    var result = (dataPricePow + 250) + (value * 300 / 2) + (locationPrice + (value * 300 / 2));
-
-                    // Округлення до двох знаків після коми і виведення без нулів після крапки
-                    var formattedResult = result.toFixed(2).replace(/\.?0+$/, '');
-
-                    priceParagraph.innerHTML = formattedResult + '$';
-                }
-            });
-        });
 
 
 
@@ -232,3 +209,31 @@
             }
         }
     });
+
+
+
+
+<!-- Скрипт розрахунку вартості -->
+        document.addEventListener('DOMContentLoaded', function () {
+            var formulaBtn = document.getElementById('formula_btn');
+            var priceParagraph = document.getElementById('price');
+
+            formulaBtn.addEventListener('click', function () {
+                var selectedInverterPower = document.querySelector('input[name="Select-the-inverter-power"]:checked');
+                var selectedFormulaValue = document.querySelector('input[name="Select-the-power-of-photovoltaic-modules"]:checked');
+                var selectedLocation = document.querySelector('input[name="Location-of-photovoltaic-modules"]:checked');
+
+                if (selectedInverterPower && selectedFormulaValue && selectedLocation) {
+                    var dataPricePow = parseInt(selectedInverterPower.getAttribute('data-price-pow'));
+                    var value = parseInt(selectedFormulaValue.value);
+                    var locationPrice = parseInt(selectedLocation.getAttribute('data-price-loc'));
+
+                    var result = (dataPricePow + 250) + (value * 300 / 2) + (locationPrice + (value * 300 / 2));
+
+                    // Округлення до двох знаків після коми і виведення без нулів після крапки
+                    var formattedResult = result.toFixed(2).replace(/\.?0+$/, '');
+
+                    priceParagraph.innerHTML = formattedResult + '$';
+                }
+            });
+        });
